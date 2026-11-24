@@ -14,9 +14,9 @@ per-request metadata (source, model, latency, tokens) for every reply.
 
 > _Deploy step — fill these in after deploying (see "Run locally" for the build)._
 
-- **Frontend:** `https://<your-frontend-url>`
-- **Backend:** `https://<your-backend-url>`
-- **Health check:** `https://<your-backend-url>/health`
+- **Frontend:** https://lyftr-chatbot-wheat.vercel.app
+- **Backend:** https://lyftr-chatbot-scgj.onrender.com
+- **Health check:** https://lyftr-chatbot-scgj.onrender.com/health
 
 ---
 
