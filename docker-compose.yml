@@ -1,0 +1,35 @@
+# docker-compose.yml
+# ------------------
+# Runs the whole stack with one command (`make up`):
+#   - backend  on http://localhost:8000
+#   - frontend on http://localhost:3000
+#
+# All configuration comes from the .env file in this folder (copy .env.example
+# to .env first).
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    # Load every variable from .env (keys, model, flags, etc.).
+    env_file:
+      - .env
+    volumes:
+      # Named volume mounted at /data so the SQLite file survives restarts.
+      - appdata:/data
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # Baked into the built JS so the browser knows where the backend is.
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:8000}
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  # This named volume is where the SQLite database file is stored.
+  appdata:

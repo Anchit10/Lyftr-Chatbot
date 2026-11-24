@@ -1,0 +1,11 @@
+# Backend dependencies.
+# Pinned to compatible ranges so Docker builds are reproducible.
+
+fastapi>=0.110,<1.0          # web framework
+uvicorn[standard]>=0.29      # ASGI server that runs FastAPI
+litellm>=1.40                # gateway to LLM providers (Gemini, etc.)
+pydantic>=2.6,<3.0           # request/response validation
+
+# --- testing only ---
+pytest>=8.0                  # test runner
+httpx>=0.27                  # used by FastAPI's TestClient

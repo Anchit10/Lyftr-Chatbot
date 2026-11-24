@@ -1,0 +1,11 @@
+"""Tests for GET /health."""
+
+
+def test_health_ok(client):
+    resp = client.get("/health")
+    assert resp.status_code == 200
+
+    body = resp.json()
+    assert body["status"] == "ok"
+    assert body["keys_configured"] == 2      # two keys configured in conftest
+    assert body["cache_enabled"] is True
